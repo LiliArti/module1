@@ -33,7 +33,7 @@ def load_tasks():
                         "status": status
                     }
                 else:
-                    print(f"Некорректная строка:{line.strip()}")
+                    print(f"Некорректная строка: {line.strip()}")
     except FileExistsError:
         print("Файл с задачами не найден")
     return tasks
@@ -85,14 +85,14 @@ def delete_task(task_id):
 
 def main_menu():
     while True:
-        print("Выберите действие:")
+        print("Выберите действие: ")
         print("1 - Создать новую задачу")
         print("2 - Просмотреть задачи")
         print("3 - Обновить задачу")
         print("4 - Удалить задачу")
         print("0 - Выйти из программы")
 
-        choice = input("Ваш выбор:")
+        choice = input("Ваш выбор: ")
         if choice == "1":
             create_task_interface()
         elif choice == "2":
@@ -107,19 +107,19 @@ def main_menu():
             print("Неверный ввод. Попробуйте снова.")
 
 def create_task_interface():
-    name = input("введите название задачи:")
-    description = input("введите описание звадачи:")
+    name = input("введите название задачи: ")
+    description = input("введите описание звадачи: ")
     priority = input("введите приоритет задачи (1 - низкий, 2 - средний, 3 - высокий)")
     while priority not in PRIORITIES:
         priority = input("Неверны ввод. Введите приоритет задачи (1 - низкий, 2 - средний, 3 - высокий) ")
-    status = input("Введите статус задачи ( 1 - новая, 2 - в процессе, 3 завершено )")
+    status = input("Введите статус задачи (1 - новая, 2 - в процессе, 3 завершено)")
     while status not in STATUSES:
-        status = input("Неверный ввод.Введите статус задачи ( 1 - новая, 2 - в процессе, 3 завершено )")
+        status = input("Неверный ввод.Введите статус задачи (1 - новая, 2 - в процессе, 3 завершено)")
     create_task(name, description, priority, status)
     print("Задача создана")
 
 def view_tasks_interface():
-    print("Выберите опцию просмотра:")
+    print("Выберите опцию просмотра: ")
     print("1 - Отобразить задачи в изначальном виде")
     print("2 - Отсортировать по статусу")
     print("3 - Отсортировать по приоритету")
@@ -160,7 +160,7 @@ def update_task_interface():
     if task_id not in tasks:
         print("Задача с таким ID не существует")
         return
-    print("Выберите поле для обновления:")
+    print("Выберите поле для обновления: ")
     print("1 - Название")
     print("2 - Описание")
     print("3 - Приоритет")
@@ -179,9 +179,9 @@ def update_task_interface():
             new_value = input("Неверны ввод. Введите приоритет задачи (1 - низкий, 2 - средний, 3 - высокий) ")
         update_task(task_id, "priority", new_value)
     elif choice == "4":
-        new_value = input("Введите статус задачи ( 1 - новая, 2 - в процессе, 3 завершено )")
+        new_value = input("Введите статус задачи (1 - новая, 2 - в процессе, 3 завершено)")
         while new_value not in STATUSES:
-            new_value = input("Неверный ввод.Введите статус задачи ( 1 - новая, 2 - в процессе, 3 завершено )")
+            new_value = input("Неверный ввод.Введите статус задачи (1 - новая, 2 - в процессе, 3 завершено)")
         update_task(task_id, "status", new_value)
     else:
         print("Неверный ввод. Возвращение в главное меню.")
